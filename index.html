@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Slot Machine</title>
+    <link rel="stylesheet" href="slot_style.css">
+</head>
+<body>
+
+    <div class="game-container">
+        
+        <div class="top-bar">
+            <div class="balance-display">
+                <span id="balanceAmount">100.00</span> $
+            </div>
+            <div class="bet-control">
+                <button class="bet-button" onclick="adjustBet(-5)">-5</button>
+                <button class="bet-button" onclick="adjustBet(-1)">-1</button>
+                <span id="currentBet">10.00</span> $
+                <button class="bet-button" onclick="adjustBet(1)">+1</button>
+                <button class="bet-button" onclick="adjustBet(5)">+5</button>
+            </div>
+        </div>
+        
+        <div class="reels-area">
+            <div class="reel" id="reel1"></div>
+            <div class="reel" id="reel2"></div>
+            <div class="reel" id="reel3"></div>
+            <div class="reel" id="reel4"></div>
+            <div class="reel" id="reel5"></div>
+            <div class="payline"></div> </div>
+
+        <div class="message-area">
+            <span id="message">اضغط للدوران!</span>
+        </div>
+        
+        <div class="controls-area">
+            
+            <div class="side-controls">
+                <button class="icon-button"><img src="menu_icon.png" alt="Menu"></button>
+                <button class="icon-button"><img src="thunder_icon.png" alt="Fast Spin"></button>
+            </div>
+            
+            <button class="spin-button" id="spinButton" onclick="spinReels()">
+                <img src="play_icon.png" alt="Play Icon" class="play-icon">
+                <span class="bet-label">PLACE YOUR BET</span>
+            </button>
+            
+            <div class="side-controls">
+                <button class="bet-max-button" onclick="setBetMax()">رهان أقصى</button>
+                <button class="icon-button"><img src="crypto_icon.png" alt="Crypto"></button>
+            </div>
+            
+        </div>
+        
+    </div>
+
+    <script src="slot_script.js"></script>
+</body>
+</html>

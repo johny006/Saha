@@ -1,0 +1,222 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    background-color: #2c3e50; /* خلفية داكنة */
+    font-family: 'Arial', sans-serif;
+    color: white;
+    direction: rtl;
+}
+
+.game-container {
+    background-color: #34495e;
+    border: 10px solid #f39c12; /* إطار ذهبي/برتقالي */
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 0 40px rgba(0, 0, 0, 0.5);
+    width: 90%;
+    max-width: 800px;
+}
+
+/* --- شريط الرصيد والرهان --- */
+.top-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    background-color: #2c3e50;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.balance-display, .bet-control {
+    font-size: 1.5em;
+    font-weight: bold;
+    color: #2ecc71; /* لون أخضر للعملة */
+}
+
+.bet-control {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    color: #f1c40f;
+}
+
+.bet-button {
+    background-color: #e67e22;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 8px 12px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.2s;
+}
+
+.bet-button:hover {
+    background-color: #d35400;
+}
+
+/* --- منطقة البكرات --- */
+.reels-area {
+    display: flex;
+    justify-content: space-around;
+    border: 5px solid #bdc3c7;
+    border-radius: 10px;
+    background-color: #1a252f;
+    overflow: hidden; /* مهم لإخفاء الرموز خارج البكرة */
+    position: relative;
+    height: 250px; /* تحديد ارتفاع منطقة عرض الرموز */
+}
+
+.reel {
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    font-size: 4em;
+    line-height: 1;
+    transition: transform 0.2s ease-out; /* حركة سلسة عند التوقف */
+}
+
+.reel-symbol {
+    width: 100%;
+    height: 80px; /* تحديد ارتفاع الرمز الواحد */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-shrink: 0; /* لمنع تقلص الرموز */
+    user-select: none;
+}
+
+/* تنسيق صور الرموز داخل البكرات (التعديل المهم) */
+.reel-symbol img {
+    width: 80%;
+    height: 80%;
+    object-fit: contain;
+}
+
+/* خط الفوز المركزي */
+.payline {
+    position: absolute;
+    width: 100%;
+    height: 4px;
+    background-color: #e74c3c; /* لون أحمر واضح */
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 10;
+    pointer-events: none;
+}
+
+/* --- منطقة الرسائل --- */
+.message-area {
+    text-align: center;
+    margin: 15px 0;
+    font-size: 1.3em;
+    color: #9b59b6; /* لون بنفسجي للرسائل */
+    min-height: 30px;
+}
+
+/* --- منطقة التحكم السفلية --- */
+.controls-area {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* زر الدوران المركزي */
+.spin-button {
+    background-color: #e74c3c; /* لون أحمر لزر الدوران */
+    color: white;
+    border: none;
+    border-radius: 50%; /* لجعل الزر دائرياً */
+    width: 120px;
+    height: 120px;
+    cursor: pointer;
+    box-shadow: 0 5px #c0392b;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    position: relative;
+    z-index: 5;
+}
+
+.spin-button:hover:not(:disabled) {
+    background-color: #c0392b;
+}
+
+.spin-button:active:not(:disabled) {
+    box-shadow: 0 2px #c0392b;
+    transform: translateY(3px);
+}
+
+.spin-button:disabled {
+    background-color: #95a5a6;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+.play-icon {
+    width: 50px; /* حجم أيقونة التشغيل */
+    height: 50px;
+    margin-bottom: 5px;
+}
+
+.play-icon img {
+    width: 100%;
+    height: 100%;
+}
+
+.bet-label {
+    font-size: 0.8em;
+}
+
+/* أزرار التحكم الجانبية */
+.side-controls {
+    display: flex;
+    gap: 15px;
+}
+
+.icon-button {
+    background-color: #3498db;
+    border: none;
+    border-radius: 10px;
+    width: 50px;
+    height: 50px;
+    padding: 0;
+    cursor: pointer;
+    box-shadow: 0 3px #2980b9;
+    transition: background-color 0.2s;
+}
+
+.icon-button:hover {
+    background-color: #2980b9;
+}
+
+.icon-button img {
+    width: 100%;
+    height: 100%;
+}
+
+.bet-max-button {
+    background-color: #f1c40f;
+    color: #2c3e50;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 15px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s;
+}
+
+.bet-max-button:hover {
+    background-color: #e7c53d;
+}
